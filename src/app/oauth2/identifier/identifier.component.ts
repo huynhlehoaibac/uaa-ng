@@ -1,10 +1,10 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CookieService } from 'ngx-cookie-service';
-import { AuthService } from '../common/auth.service';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-identifier',
@@ -44,6 +44,10 @@ export class IdentifierComponent implements OnInit {
     const redirectUri = new URL(decodeURIComponent(this.origin));
     redirectUri.searchParams.set('account_code', code);
     window.location.href = redirectUri.toString();
+  }
+
+  showRawPassword(pwdElement: HTMLInputElement, showPwd: boolean) {
+    pwdElement.type = showPwd ? 'text' : 'password';
   }
 
   onSubmit() {

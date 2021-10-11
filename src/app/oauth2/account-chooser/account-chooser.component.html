@@ -1,70 +1,75 @@
-<div>
-  <h2 class="text-center text-3xl text-gray-900">
-    Choose an account
-  </h2>
-  <p class="mt-2 text-center text-sm ">
-    to continue to
-    <a href="#" class="font-medium text-blue-600 hover:text-blue-500">
-      SampleApp
+<ng-container *transloco="let t">
+  <div *ngIf="!removeMode; else removeAccountBlock">
+    <h2 class="text-center text-2xl text-gray-900">
+      {{ t('Choose an account') }}
+    </h2>
+    <p class="mt-2 text-center text-sm">
+      {{ t('to continue to') }}
+      <a href="#" class="font-medium text-navy-600 hover:text-navy-500">
+        SampleApp
+      </a>
+    </p>
+  </div>
+  <ng-template #removeAccountBlock>
+    <h2 class="text-center text-2xl text-gray-900">
+      {{ t('Remove an account') }}
+    </h2>
+    <p class="mt-2 text-center text-sm">
+      {{ t('from this browser') }}
+    </p>
+  </ng-template>
+
+  <div class="my-6 -mx-6">
+    <ng-container *ngFor="let account of accounts; index as i">
+      <div (click)="!removeMode ? useAccount(account) : removeAccount(account)">
+        <div class="cursor-pointer px-6 hover:bg-navy-100 hover:bg-opacity-60">
+          <div class="flex justify-around py-3 w-full border-b border-gray-300 items-center">
+            <div class="left w-7 h-7 mr-3 rounded-full flex justify-center items-center text-sm text-white" [style.backgroundColor]="colors[i % 11]">
+              {{ account?.details?.acronym }}
+            </div>
+            <div class="flex-1 overflow-hidden">
+              <p class="font-medium text-sm text-gray-600 truncate" title="{{ account?.details?.firstname }} {{ account?.details?.lastname }}">
+                {{ account?.details?.firstname }} {{ account?.details?.lastname }}
+              </p>
+              <p class="text-xs text-gray-600 truncate" title="{{ account?.details?.username }}">{{ account?.details?.username }}</p>
+            </div>
+            <div *ngIf="removeMode" class="right">
+              <svg class="text-red-600" fill="currentColor" focusable="false" width="24px" height="24px" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg"><path d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div [routerLink]="['../identifier']" queryParamsHandling="preserve">
+      <div class="cursor-pointer px-6 hover:bg-navy-100 hover:bg-opacity-60">
+        <div class="flex items-center py-3 border-b border-gray-300">
+          <div class="mr-3 px-1">
+            <svg class="text-gray-600" fill="currentColor" focusable="false" width="20px" height="20px" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg"><path d="M12,2C6.48,2,2,6.48,2,12c0,5.52,4.48,10,10,10c5.52,0,10-4.48,10-10C22,6.48,17.52,2,12,2z M7.07,18.28 c0.43-0.9,3.05-1.78,4.93-1.78s4.51,0.88,4.93,1.78C15.57,19.36,13.86,20,12,20S8.43,19.36,7.07,18.28z M18.36,16.83 c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93,0.59-6.36,2.33C4.62,15.49,4,13.82,4,12c0-4.41,3.59-8,8-8c4.41,0,8,3.59,8,8 C20,13.82,19.38,15.49,18.36,16.83z"></path><path d="M12,6c-1.94,0-3.5,1.56-3.5,3.5S10.06,13,12,13c1.94,0,3.5-1.56,3.5-3.5S13.94,6,12,6z M12,11c-0.83,0-1.5-0.67-1.5-1.5 C10.5,8.67,11.17,8,12,8c0.83,0,1.5,0.67,1.5,1.5C13.5,10.33,12.83,11,12,11z"></path></svg>
+          </div>
+          <div class="flex-1">
+            <p class="font-medium text-sm text-gray-600">{{ t('Use another account') }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a (click)="removeMode = !removeMode" [ngClass]="{'hidden' : removeMode}">
+      <div class="cursor-pointer px-6 hover:bg-navy-100 hover:bg-opacity-60">
+        <div class="flex items-center py-3 border-b border-gray-300">
+          <div class="mr-3 px-1">
+            <svg class="text-gray-600" fill="currentColor" focusable="false" width="20px" height="20px" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg"><path d="M9,12 C11.21,12 13,10.21 13,8 C13,5.79 11.21,4 9,4 C6.79,4 5,5.79 5,8 C5,10.21 6.79,12 9,12 Z M9,6 C10.1,6 11,6.9 11,8 C11,9.1 10.1,10 9,10 C7.9,10 7,9.1 7,8 C7,6.9 7.9,6 9,6 Z M9,13 C6.33,13 1,14.34 1,17 L1,20 L17,20 L17,17 C17,14.34 11.67,13 9,13 Z M15,18 L3,18 L3,17.01 C3.2,16.29 6.3,15 9,15 C11.7,15 14.8,16.29 15,17 L15,18 Z M18,11 L15,11 L15,9 L18,9 L20,9 L23,9 L23,11 L20,11 L18,11 Z"></path></svg>
+          </div>
+          <div class="flex-1">
+            <p class="font-medium text-sm text-gray-600">{{ t('Remove an account') }}</p>
+          </div>
+        </div>
+      </div>
     </a>
-  </p>
-</div>
-<div class="mt-8">
-  <div *ngFor="let account of accounts; index as i" class="cursor-pointer">
-    <!-- <div class="d-flex">
-      <div class="d-flex justify-content-center align-items-center" style="flex: 0 28px;">
-        <div class="d-flex justify-content-center align-items-center circle-text"
-          [style.backgroundColor]="colors[i % 11]">{{ account?.accountDetails?.shortName }}
-        </div>
-      </div>
-      <div (click)="choose(account.code)" class="col text-truncate">
-        <div class="text-medium text-truncate"
-          title="{{ account?.accountDetails?.firstname }} {{ account?.accountDetails?.lastname }}">
-          {{ account?.accountDetails?.username }} {{ account?.accountDetails?.lastname }}
-        </div>
-        <div class="text-truncate" title="{{ account?.accountDetails?.emailAddress }}">
-          {{ account?.accountDetails?.emailAddress }}
-        </div>
-      </div>
-      <div (click)="logout(account.code)" class="d-flex justify-content-center align-items-center logout">
-        <i class="fa fa-times"></i>
-      </div>
-    </div> -->
-    <div class="flex items-center px-4 py-2 border-b border-gray-300 hover:bg-blue-100">
-      <div (click)="choose(account.code)" class="relative w-8 h-8 mr-3 rounded-full md:block">
-        <img class="object-cover w-full h-full rounded-full" src="https://images.pexels.com/photos/5212324/pexels-photo-5212324.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260" alt="" loading="lazy">
-        <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-      </div>
-      <div>
-        <p class="font-semibold text-gray-600" title="{{ account?.accountDetails?.firstname }} {{ account?.accountDetails?.lastname }}">
-          {{ account?.accountDetails?.firstname }} {{ account?.accountDetails?.lastname }}
-        </p>
-        <p class="text-xs text-gray-600">{{ account?.accountDetails?.username }}</p>
+    <div *ngIf="removeMode">
+      <div class="px-6 p-2 -mt-px">
+        <button (click)="removeMode = !removeMode" type="button" class="p-1 border border-transparent text-sm font-sm rounded text-navy-600 hover:text-navy-700 hover:bg-navy-100 focus:bg-navy-200">
+          {{ t('Done') }}
+        </button>
       </div>
     </div>
   </div>
-  <a [routerLink]="['../identifier']" queryParamsHandling="preserve" href="javascript:void(0)"
-    class="list-group-item list-group-item-action with-action">
-    <!-- <div class="d-flex">
-      <div class="d-flex justify-content-center align-items-center" style="flex: 0 28px;">
-        <div class="d-flex justify-content-center align-items-center">
-          <img [src]="'assets/img/avatars/outline-account_circle-24px.svg'">
-        </div>
-      </div>
-      <div class="col d-flex align-items-center">
-        <span class="text-medium">{{ 'Use another account' }}</span>
-      </div>
-      <div class="d-flex justify-content-center align-items-center navigation">
-        <i class="fas fa-chevron-right"></i>
-      </div>
-    </div> -->
-    <div class="flex items-center px-4 py-2 border-b border-gray-300 hover:bg-blue-100">
-      <div class="w-8 h-8 mr-3">
-        <svg fill="currentColor" focusable="false" width="32px" height="32px" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg"><path d="M12,2C6.48,2,2,6.48,2,12c0,5.52,4.48,10,10,10c5.52,0,10-4.48,10-10C22,6.48,17.52,2,12,2z M7.07,18.28 c0.43-0.9,3.05-1.78,4.93-1.78s4.51,0.88,4.93,1.78C15.57,19.36,13.86,20,12,20S8.43,19.36,7.07,18.28z M18.36,16.83 c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93,0.59-6.36,2.33C4.62,15.49,4,13.82,4,12c0-4.41,3.59-8,8-8c4.41,0,8,3.59,8,8 C20,13.82,19.38,15.49,18.36,16.83z"></path><path d="M12,6c-1.94,0-3.5,1.56-3.5,3.5S10.06,13,12,13c1.94,0,3.5-1.56,3.5-3.5S13.94,6,12,6z M12,11c-0.83,0-1.5-0.67-1.5-1.5 C10.5,8.67,11.17,8,12,8c0.83,0,1.5,0.67,1.5,1.5C13.5,10.33,12.83,11,12,11z"></path></svg>
-      </div>
-      <div>
-        <p class="text-sm font-semibold text-gray-600">Use another account</p>
-      </div>
-    </div>
-  </a>
-</div>
+</ng-container>
