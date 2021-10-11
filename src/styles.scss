@@ -3,6 +3,11 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* Material */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Custom classes */
 .mark {
   padding: 0.1em 0.4em;
   border-radius: 0.8em 0.3em;
@@ -10,4 +15,12 @@
   background-image: linear-gradient( to right, rgba(255, 225, 0, 0.1), rgba(255, 225, 0, 0.7) 4%, rgba(255, 225, 0, 0.3) );
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
+}
+
+.p-2px {
+  padding: 2px;
+}
+
+.-m-2px {
+  margin: -2px;
 }

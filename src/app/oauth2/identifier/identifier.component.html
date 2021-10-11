@@ -1,39 +1,41 @@
-<div class="mb-8">
-  <h2 class="text-center text-3xl text-gray-900">
-    Sign in
-  </h2>
-  <p class="mt-2 text-center text-sm ">
-    to continue to
-    <a href="#" class="font-medium text-blue-600 hover:text-blue-500">
-      SampleApp
-    </a>
-  </p>
-</div>
-<form #f="ngForm" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
-  <div class="rounded shadow-sm -space-y-px">
-    <div>
-      <label for="username" class="sr-only">Username</label>
-      <input formControlName="username" id="username" type="username" autocomplete="username" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" placeholder="Username">
+<ng-container *transloco="let t">
+  <div class="mb-8">
+    <h2 class="text-center text-2xl text-gray-900">
+      {{ t('Sign in') }}
+    </h2>
+    <p class="mt-2 text-center text-sm ">
+      {{ t('to continue to') }}
+      <a href="#" class="rounded p-2px -m-2px font-medium text-navy-500 focus:text-navy-600 focus:bg-navy-50">
+        SampleApp
+      </a>
+    </p>
+  </div>
+  <form #f="ngForm" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div class="rounded shadow-sm -space-y-px">
+      <div>
+        <label for="username" class="sr-only">{{ t('Username') }}</label>
+        <input formControlName="username" id="username" type="username" autocomplete="username" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t focus:outline-none focus:ring-0 focus:border-navy-500 focus:z-10 text-sm" placeholder="{{ t('Username') }}">
+      </div>
+      <div>
+        <label for="password" class="sr-only">{{ t('Password') }}</label>
+        <input #pwd formControlName="password" id="password" type="password" hi autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b focus:outline-none focus:ring-0 focus:border-navy-500 focus:z-10 text-sm" placeholder="{{ t('Password') }}">
+      </div>
     </div>
-    <div>
-      <label for="password" class="sr-only">Password</label>
-      <input formControlName="password" id="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" placeholder="Password">
+
+    <div class="flex items-center mt-2">
+      <input #showPwd (click)="showRawPassword(pwd, showPwd.checked)" id="show-password" name="show-password" type="checkbox" class="h-4 w-4 border-gray-300 rounded-sm focus:ring-0 focus:ring-offset-0 checked:text-navy-500 checked:border-navy-500">
+      <label for="show-password" class="ml-2 block text-sm text-gray-900">
+        {{ t('Show password') }}
+      </label>
     </div>
-  </div>
 
-  <div class="flex items-center mt-2">
-    <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-blue-600 border-gray-300 rounded-sm focus:ring-0 focus:ring-offset-0 checked:border-blue-600">
-    <label for="remember-me" class="ml-2 block text-sm text-gray-900">
-      Show password
-    </label>
-  </div>
-
-  <div class="flex items-center justify-between mt-8">
-    <a href="#" class="text-sm text-blue-600 hover:text-blue-500">
-      Forgot password?
-    </a>
-    <button type="submit" class="py-2 px-6 border border-transparent text-sm font-medium rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-      Next
-    </button>
-  </div>
-</form>
+    <div class="flex items-center justify-between mt-8">
+      <a href="#" class="p-2 -m-2 rounded text-sm text-navy-500 hover:text-blue-900 hover:bg-navy-50 focus:bg-navy-100">
+        {{ t('Forgot password?') }}
+      </a>
+      <button type="submit" class="py-2 px-6 border-none text-sm rounded text-white bg-navy-500 hover:bg-navy-600 focus:outline-none focus:bg-navy-700">
+        {{ t('Next') }}
+      </button>
+    </div>
+  </form>
+</ng-container>

@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   important: true,
   purge: {
@@ -6,19 +8,23 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
+    screens: {
+      'xs': '475px',
+      ...defaultTheme.screens,
+    },
     extend: {
       colors: {
         navy: {
-          50: '#f5f9fa',
-          100: '#def1fc',
-          200: '#b8def8',
-          300: '#88beed',
-          400: '#5898df',
-          500: '#4375d2',
-          600: '#3859bf',
-          700: '#2d439c',
-          800: '#202d71',
-          900: '#121c48',
+          50: '#e4eefc',
+          100: '#bad5f8',
+          200: '#8db9f4',
+          300: '#5f9def',
+          400: '#3c88eb',
+          500: '#1a73e8',
+          600: '#176be5',
+          700: '#1360e2',
+          800: '#0f56de',
+          900: '#0843d8',
         },
       },
     },
