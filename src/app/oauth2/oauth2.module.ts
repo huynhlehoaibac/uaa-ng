@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TranslocoModule } from '@ngneat/transloco';
+import { LayoutModule } from '../layout/layout.module';
 import { AccountChooserComponent } from './account-chooser/account-chooser.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { IdentifierComponent } from './identifier/identifier.component';
@@ -19,6 +20,7 @@ import { OAuth2Component } from './oauth2.component';
   imports: [
     CommonModule,
     OAuth2RoutingModule,
+    LayoutModule,
     TranslocoModule,
     ReactiveFormsModule,
     MatDialogModule,

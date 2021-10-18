@@ -3,7 +3,7 @@
     <h2 class="text-center text-2xl text-gray-900">
       {{ t('Sign in') }}
     </h2>
-    <p class="mt-2 text-center text-sm ">
+    <p class="mt-2 text-center ">
       {{ t('to continue to') }}
       <a href="#" class="rounded p-2px -m-2px font-medium text-navy-500 focus:text-navy-600 focus:bg-navy-50">
         SampleApp
@@ -11,29 +11,16 @@
     </p>
   </div>
   <form #f="ngForm" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
-    <div class="rounded shadow-sm -space-y-px">
-      <div>
-        <label for="username" class="sr-only">{{ t('Username') }}</label>
-        <input formControlName="username" id="username" type="username" autocomplete="username" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t focus:outline-none focus:ring-0 focus:border-navy-500 focus:z-10 text-sm" placeholder="{{ t('Username') }}">
-      </div>
-      <div>
-        <label for="password" class="sr-only">{{ t('Password') }}</label>
-        <input #pwd formControlName="password" id="password" type="password" hi autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b focus:outline-none focus:ring-0 focus:border-navy-500 focus:z-10 text-sm" placeholder="{{ t('Password') }}">
-      </div>
-    </div>
-
-    <div class="flex items-center mt-2">
-      <input #showPwd (click)="showRawPassword(pwd, showPwd.checked)" id="show-password" name="show-password" type="checkbox" class="h-4 w-4 border-gray-300 rounded-sm focus:ring-0 focus:ring-offset-0 checked:text-navy-500 checked:border-navy-500">
-      <label for="show-password" class="ml-2 block text-sm text-gray-900">
-        {{ t('Show password') }}
-      </label>
+    <div class="outline relative m-px ring-1 ring-gray-300 rounded bg-white focus-within:ring-2 focus-within:ring-navy-500">
+      <input formControlName="username" type="text" name="username" placeholder=" " class="appearance-none border-none block w-full p-4 py-3 text-gray-900 placeholder-gray-500 focus:ring-0 bg-transparent" />
+      <label for="username" class="absolute top-0 text-gray-500 rounded p-4 py-3 duration-150 origin-0 select-none pointer-events-none">Username</label>
     </div>
 
     <div class="flex items-center justify-between mt-8">
       <a href="#" class="p-2 -m-2 rounded text-sm text-navy-500 hover:text-blue-900 hover:bg-navy-50 focus:bg-navy-100">
-        {{ t('Forgot password?') }}
+        {{ t('Create account') }}
       </a>
-      <button type="submit" class="py-2 px-6 border-none text-sm rounded text-white bg-navy-500 hover:bg-navy-600 focus:outline-none focus:bg-navy-700">
+      <button type="submit" class="py-2 px-6 border-none rounded text-sm text-white bg-navy-500 hover:bg-navy-600 focus:outline-none focus:bg-navy-700">
         {{ t('Next') }}
       </button>
     </div>

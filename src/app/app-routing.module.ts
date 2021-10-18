@@ -7,10 +7,15 @@ const routes: Routes = [
     loadChildren: () =>
       import('./oauth2/oauth2.module').then((m) => m.OAuth2Module),
   },
+  {
+    path: 'challenge',
+    loadChildren: () =>
+      import('./challenge/challenge.module').then((m) => m.ChallengeModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

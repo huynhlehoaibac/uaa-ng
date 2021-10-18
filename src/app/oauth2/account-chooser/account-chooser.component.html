@@ -3,7 +3,7 @@
     <h2 class="text-center text-2xl text-gray-900">
       {{ t('Choose an account') }}
     </h2>
-    <p class="mt-2 text-center text-sm">
+    <p class="mt-2 text-center text">
       {{ t('to continue to') }}
       <a href="#" class="rounded p-2px -m-2px font-medium text-navy-500 focus:text-navy-600 focus:bg-navy-50">
         SampleApp
@@ -14,7 +14,7 @@
     <h2 class="text-center text-2xl text-gray-900">
       {{ t('Remove an account') }}
     </h2>
-    <p class="mt-2 text-center text-sm">
+    <p class="mt-2 text-center text">
       {{ t('from this browser') }}
     </p>
   </ng-template>
@@ -65,7 +65,7 @@
       </div>
     </a>
     <div *ngIf="removeMode">
-      <div class="px-6 p-2 mb-px">
+      <div class="px-6 p-2 border-b border-transparent">
         <button (click)="removeMode = !removeMode" type="button" class="p-1 -mx-1 text-sm font-sm rounded text-navy-500 hover:text-blue-900 hover:bg-navy-50 focus:bg-navy-100">
           {{ t('Done') }}
         </button>

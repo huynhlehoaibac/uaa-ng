@@ -27,11 +27,20 @@ module.exports = {
           900: '#0843d8',
         },
       },
+      padding: {
+        '2px': '2px'
+      },
+      margin: {
+        '-2px': '-2px'
+      },
+      transformOrigin: {
+        "0": "0%",
+      },
     },
   },
   variants: {
     extend: {
-      borderColor: ['checked'],
+      borderColor: ['checked', 'responsive', 'hover', 'focus', 'focus-within'],
     },
   },
   plugins: [require('@tailwindcss/forms')],

@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { CookieService } from 'ngx-cookie-service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +28,9 @@ export function tokenGetter() {
         tokenGetter: tokenGetter,
       },
     }),
+    LoadingBarModule,
+    LoadingBarRouterModule,
+    LoadingBarHttpClientModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

@@ -1,7 +1,7 @@
 {
-  "Sign in with UAA": "Đăng nhập bằng UAA",
+  "Sign in with UAA": "Đăng nhập với UAA",
   "Choose an account": "Chọn tài khoản",
-  "to continue to": "để tiếp tục với",
+  "to continue to": "để tiếp tục tới",
   "Remove an account": "Xoá tài khoản",
   "from this browser": "khỏi trình duyệt này",
   "Use another account": "Sử dụng một tài khoản khác",
@@ -15,5 +15,8 @@
   "Remove account?": "Xoá tài khoản?",
   "Cancel": "Huỷ",
   "Yes, remove": "Có, hãy xoá",
-  "[ {{username}} ] will no longer be used with UAA services on this browser. Sign in when you’re ready to use your account again.": "[ {{username}} ] sẽ không được dùng với các dịch vụ của UAA trên trình duyệt này nữa. Hãy đăng nhập khi bạn sẵn sàng sử dụng lại tài khoản của mình."
+  "[ {{username}} ] will no longer be used with UAA services on this browser. Sign in when you’re ready to use your account again.": "[ {{username}} ] sẽ không được dùng với các dịch vụ của UAA trên trình duyệt này nữa. Hãy đăng nhập khi bạn sẵn sàng sử dụng lại tài khoản của mình.",
+  "Enter your password": "Nhập mật khẩu của bạn",
+  "Wrong password. Try again or click Forgot password to reset it.": "Mật khẩu không chính xác. Hãy thử lại hoặc nhấp vào {{Forgot password?}} để đặt lại mật khẩu."
+
 }
